@@ -54,4 +54,17 @@ void sendNumber(int num, int field) {
   println("field"+ field);
   post.send();
   println("Reponse Content-Length Header: " + post.getHeader("Content-Length"));
+  //azurePost(number,field);
+}
+
+void azurePost(int num, int field) {
+  String po;
+  PostRequest post2 = new PostRequest("https://iotmcare.azure-mobile.net/tables/datastore");
+  post2.addHeader("X-ZUMO-APPLICATION", "DIxyzBoGouxqPaojoTezZFWtiVsdxF24");
+  post2.addData("slot", Integer.toString(field));
+  if (num==404) po = "Free";
+  else po = "Parked";
+  post2.addData("value", po);
+  post2.send();
+  println("Reponse 2 Content-Length Header: " + post2.getHeader("Content-Length"));
 }
