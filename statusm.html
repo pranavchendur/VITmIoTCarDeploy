@@ -18,7 +18,7 @@
 	  <div class="container-fluid">
 	    <!-- Brand and toggle get grouped for better mobile display -->
 	    <div class="navbar-header">
-	      <a class="navbar-brand" href="#">Parking Lot Status</a>
+	      <a class="navbar-brand" href="index.html">Parking Lot Status</a>
 	    </div>
 	  </div><!-- /.container-fluid -->
 	</nav>
@@ -26,32 +26,53 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<center><h3>Select a location</h3></center>
+				<center><h3>At Mayajaal</h3></center>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-md-3">
 			<center>
-			<a href="status.html">
-				<img class="img-circle" alt="140x140" style="width: 140px; height: 140px;" src="http://www.urbantree.in/blog/wp-content/uploads/2015/04/7524775466_9bc4869638_c.jpg">
-				<h3>Express Avenue Mall</h3>
-			</a>
-			</center>
-			</div>
-			<div class="col-md-3">
-			<center>
-			<a href="statusm.html">
-				<img class="img-circle" alt="140x140" style="width: 140px; height: 140px;" src="https://lh6.googleusercontent.com/-X7UQP66LAv4/AAAAAAAAAAI/AAAAAAAAABk/vt4FDgm_-28/s0-c-k-no-ns/photo.jpg">
-				<h3>Mayajaal</h3>
-			</a>
+				<button onclick="loadDoc()" id="dem1" class="img-circle btn btn-success" alt="140x140" style="width: 140px; height: 140px;">
+				<h3>Slot 1</h3>
+				<div id="demo1"></div>
 			</center>
 			</div>
 		</div>
 	</div>
 
+	<script>
+	
+	</script>
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	<!-- <script src="myscript.js"></script> -->
+	<script type="text/javascript">
+	$(document).ready(function(){
+		loadDoc();
+		setInterval(loadDoc, 1000);
+	});
+	function loadDoc() {
+	  var xhttp = new XMLHttpRequest();
+	  xhttp.open("GET", "state3.txt", true);
+	  xhttp.send();
+	  xhttp.onreadystatechange = function() {
+	    if (xhttp.readyState == 4 && xhttp.status == 200) {
+	       if (xhttp.responseText=="404") {
+		      	document.getElementById("dem1").className = "img-circle btn btn-success";
+		      document.getElementById("demo1").innerHTML = "<div style=\"color:green;\">Free</p>";
+	  		}
+	  	   else {
+	  	   	document.getElementById("dem1").className = "img-circle btn btn-danger";
+	  	   	document.getElementById("demo1").innerHTML = "<div style=\"color:red;\">Parked</p>";
+	  	   }
+
+	    }
+	  };
+	}
+	</script>
+	
   </body>
 </html>
