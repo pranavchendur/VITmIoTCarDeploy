@@ -14,7 +14,7 @@ int PORTNUM = 0; //port number of your arduino
 Serial arduino;
 Client c;
 String data;
-int number,field; //read from arduino
+int number,field,pv1,pv2; //read from arduino
 
 void setup() {
   size(600, 400);
